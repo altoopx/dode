@@ -1,0 +1,1875 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#0a0a2e">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>🌙 هدية خاصة لدعاء 💛</title>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;600;700;900&family=Aref+Ruqaa:wght@400;700&family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #ffd700;
+            --gold-light: #ffe44d;
+            --gold-dark: #cc9900;
+            --rose: #ff6b9d;
+            --rose-dark: #e91e63;
+            --purple-deep: #0a0a2e;
+            --purple-mid: #1a1a4e;
+            --purple-light: #2d1b69;
+            --cream: #e8d5b7;
+            --lavender: #c4b5d9;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+        body {
+            font-family: 'Tajawal', 'Cairo', sans-serif;
+            background: var(--purple-deep);
+            color: #fff;
+            overflow-x: hidden;
+            line-height: 1.8;
+        }
+
+        /* ============================================ */
+        /* ============= WATERMARK =================== */
+        /* ============================================ */
+        .watermark {
+            position: fixed;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 99999;
+            text-decoration: none;
+            font-family: 'Cairo', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: rgba(255, 215, 0, 0.5);
+            background: rgba(10, 10, 46, 0.7);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            padding: 8px 22px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 215, 0, 0.15);
+            transition: all 0.4s ease;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+
+        .watermark:hover {
+            color: var(--gold);
+            border-color: var(--gold);
+            background: rgba(10, 10, 46, 0.9);
+            box-shadow: 0 0 25px rgba(255, 215, 0, 0.2);
+            transform: translateX(-50%) translateY(-3px);
+        }
+
+        .watermark .wm-icon {
+            font-size: 1rem;
+        }
+
+        .watermark .wm-sep {
+            width: 1px;
+            height: 14px;
+            background: rgba(255, 215, 0, 0.3);
+        }
+
+        .watermark .wm-made {
+            font-size: 0.7rem;
+            opacity: 0.6;
+        }
+
+        /* ============================================ */
+        /* ============= PASSWORD SCREEN ============= */
+        /* ============================================ */
+        .password-screen {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(135deg, #050520 0%, #0a0a2e 30%, #1a0533 60%, #0d0d2b 100%);
+            z-index: 100000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+
+        .password-screen.hidden {
+            opacity: 0; visibility: hidden; pointer-events: none;
+        }
+
+        .pw-particles {
+            position: absolute; top: 0; left: 0;
+            width: 100%; height: 100%;
+            overflow: hidden; pointer-events: none;
+        }
+
+        .pw-particle {
+            position: absolute; border-radius: 50%;
+            animation: pwFloat var(--dur) ease-in-out infinite;
+            opacity: 0.3;
+        }
+
+        @keyframes pwFloat {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            25% { transform: translateY(-20px) translateX(10px); }
+            50% { transform: translateY(-10px) translateX(-10px); }
+            75% { transform: translateY(-30px) translateX(5px); }
+        }
+
+        .pw-container {
+            position: relative; z-index: 2;
+            text-align: center;
+            max-width: 450px; width: 100%;
+        }
+
+        .pw-lock-icon {
+            font-size: 4rem; margin-bottom: 20px;
+            animation: lockP 2s ease-in-out infinite; display: block;
+        }
+
+        @keyframes lockP {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1) rotate(5deg); }
+        }
+
+        .pw-title {
+            font-family: 'Aref Ruqaa', serif;
+            font-size: 2.2rem; color: var(--gold);
+            margin-bottom: 8px; text-shadow: 0 0 30px rgba(255,215,0,0.3);
+        }
+
+        .pw-subtitle {
+            color: var(--cream); font-size: 1rem;
+            margin-bottom: 30px; opacity: 0.8;
+        }
+
+        .pw-input {
+            width: 100%; padding: 18px 25px;
+            border: 2px solid rgba(255,215,0,0.3);
+            border-radius: 15px;
+            background: rgba(255,255,255,0.05);
+            color: #fff; font-size: 1.2rem;
+            font-family: 'Cairo', sans-serif;
+            text-align: center; outline: none;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+        }
+
+        .pw-input:focus {
+            border-color: var(--gold);
+            box-shadow: 0 0 30px rgba(255,215,0,0.2);
+            background: rgba(255,255,255,0.08);
+        }
+
+        .pw-input::placeholder {
+            color: rgba(255,255,255,0.3);
+            letter-spacing: 1px; font-size: 1rem;
+        }
+
+        .pw-hint {
+            color: var(--rose); font-size: 0.9rem;
+            margin-bottom: 25px;
+            display: flex; align-items: center;
+            justify-content: center; gap: 8px;
+        }
+
+        .pw-btn {
+            width: 100%; padding: 16px;
+            border: none; border-radius: 15px;
+            background: linear-gradient(135deg, var(--gold), #ff8c00);
+            color: var(--purple-deep);
+            font-size: 1.2rem; font-weight: 900;
+            font-family: 'Cairo', sans-serif;
+            cursor: pointer; transition: all 0.3s ease;
+            position: relative; overflow: hidden;
+        }
+
+        .pw-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 40px rgba(255,215,0,0.4);
+        }
+
+        .pw-btn:active { transform: translateY(0); }
+
+        .pw-error {
+            color: #ff4444; font-size: 0.95rem;
+            margin-top: 15px; opacity: 0;
+            transition: opacity 0.3s; min-height: 25px;
+        }
+
+        .pw-error.show { opacity: 1; animation: shake 0.5s ease; }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
+        .pw-hearts {
+            margin-top: 30px;
+            display: flex; justify-content: center; gap: 15px;
+        }
+
+        .pw-hearts span {
+            font-size: 1.5rem;
+            animation: hFloat var(--d) ease-in-out infinite;
+            animation-delay: var(--delay);
+        }
+
+        @keyframes hFloat {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-10px) scale(1.2); }
+        }
+
+        /* ============================================ */
+        /* ============= SPLASH SCREEN =============== */
+        /* ============================================ */
+        .splash-screen {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: radial-gradient(ellipse at center, #1a0533 0%, #0a0a2e 50%, #000 100%);
+            z-index: 10000;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 30px; text-align: center;
+            transition: opacity 1s ease, visibility 1s ease;
+        }
+
+        .splash-screen.active { display: flex; }
+        .splash-screen.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+
+        .splash-envelope {
+            font-size: 5rem; margin-bottom: 15px;
+            animation: envB 1.5s ease-in-out infinite;
+        }
+
+        @keyframes envB {
+            0%, 100% { transform: scale(1) rotate(0); }
+            25% { transform: scale(1.1) rotate(-5deg); }
+            75% { transform: scale(1.1) rotate(5deg); }
+        }
+
+        .splash-name {
+            font-family: 'Aref Ruqaa', serif;
+            font-size: 3rem; color: var(--gold);
+            text-shadow: 0 0 40px rgba(255,215,0,0.4);
+            margin-bottom: 5px;
+        }
+
+        .splash-love {
+            font-size: 1.3rem; color: var(--rose); margin-bottom: 25px;
+        }
+
+        .splash-msg {
+            font-size: 1.1rem; color: var(--cream);
+            max-width: 400px; margin-bottom: 35px; line-height: 2;
+        }
+
+        .splash-open-btn {
+            padding: 16px 50px; border: none; border-radius: 50px;
+            background: linear-gradient(135deg, var(--rose), var(--rose-dark));
+            color: #fff; font-size: 1.2rem; font-weight: 700;
+            font-family: 'Cairo', sans-serif;
+            cursor: pointer; transition: all 0.3s ease;
+            animation: btnG 2s ease-in-out infinite;
+        }
+
+        .splash-open-btn:hover { transform: scale(1.05); }
+
+        @keyframes btnG {
+            0%, 100% { box-shadow: 0 0 20px rgba(255,107,157,0.4); }
+            50% { box-shadow: 0 0 50px rgba(255,107,157,0.7), 0 0 80px rgba(255,107,157,0.3); }
+        }
+
+        /* ============================================ */
+        /* ============= GLOBAL EFFECTS ============== */
+        /* ============================================ */
+        .stars-container {
+            position: fixed; top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 0; pointer-events: none;
+        }
+
+        .star {
+            position: absolute; background: #fff; border-radius: 50%;
+            animation: twinkle var(--dur) ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.15; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.3); }
+        }
+
+        .floating-emoji {
+            position: fixed; z-index: 1; pointer-events: none;
+            animation: floatE var(--speed) ease-in-out infinite; opacity: 0.3;
+        }
+
+        @keyframes floatE {
+            0%, 100% { transform: translateY(0) rotate(-3deg); }
+            50% { transform: translateY(-20px) rotate(3deg); }
+        }
+
+        .confetti-piece {
+            position: fixed; z-index: 9998; pointer-events: none;
+            animation: confettiFall var(--fs) linear forwards;
+        }
+
+        @keyframes confettiFall {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+        }
+
+        .rose-petal {
+            position: fixed; z-index: 9997; pointer-events: none;
+            width: 15px; height: 15px;
+            background: var(--rose);
+            border-radius: 50% 0 50% 50%;
+            opacity: 0.6;
+            animation: petalFall var(--ps) linear forwards;
+        }
+
+        @keyframes petalFall {
+            0% { transform: translateY(-5vh) rotate(0deg) translateX(0); opacity: 0.7; }
+            25% { transform: translateY(25vh) rotate(90deg) translateX(30px); }
+            50% { transform: translateY(50vh) rotate(180deg) translateX(-20px); }
+            75% { transform: translateY(75vh) rotate(270deg) translateX(25px); }
+            100% { transform: translateY(110vh) rotate(360deg) translateX(-10px); opacity: 0; }
+        }
+
+        /* ============================================ */
+        /* =========== MUSIC PLAYER ================== */
+        /* ============================================ */
+        .music-player {
+            position: fixed;
+            bottom: 70px; left: 25px;
+            z-index: 9999;
+            background: rgba(26,5,51,0.9);
+            border: 2px solid rgba(255,215,0,0.4);
+            border-radius: 50px;
+            padding: 10px 22px;
+            display: flex; align-items: center; gap: 10px;
+            cursor: pointer;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            transition: all 0.3s ease;
+        }
+
+        .music-player:hover {
+            transform: scale(1.05);
+            border-color: var(--gold);
+            box-shadow: 0 0 25px rgba(255,215,0,0.25);
+        }
+
+        .music-icon {
+            font-size: 1.3rem;
+            animation: mBounce 1s ease-in-out infinite;
+        }
+
+        .music-player.paused .music-icon { animation: none; }
+
+        @keyframes mBounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        .music-bars {
+            display: flex; gap: 2px; align-items: flex-end; height: 18px;
+        }
+
+        .music-bar {
+            width: 3px; background: var(--gold);
+            border-radius: 2px; animation: mBar 0.7s ease-in-out infinite;
+        }
+
+        .music-bar:nth-child(1) { height: 7px; animation-delay: 0s; }
+        .music-bar:nth-child(2) { height: 13px; animation-delay: 0.15s; }
+        .music-bar:nth-child(3) { height: 9px; animation-delay: 0.3s; }
+        .music-bar:nth-child(4) { height: 16px; animation-delay: 0.1s; }
+        .music-bar:nth-child(5) { height: 5px; animation-delay: 0.25s; }
+
+        .music-player.paused .music-bar { animation: none; height: 4px !important; }
+
+        @keyframes mBar {
+            0%, 100% { transform: scaleY(1); }
+            50% { transform: scaleY(2.2); }
+        }
+
+        .music-label { font-size: 0.8rem; color: var(--gold); font-weight: 600; }
+
+        /* ============================================ */
+        /* ============= BACK TO TOP ================= */
+        /* ============================================ */
+        .back-to-top {
+            position: fixed;
+            bottom: 70px; right: 25px;
+            width: 48px; height: 48px;
+            background: linear-gradient(135deg, var(--gold), #ff8c00);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.3rem; cursor: pointer;
+            z-index: 9999; opacity: 0; visibility: hidden;
+            transition: all 0.3s ease;
+            border: none; color: var(--purple-deep);
+            box-shadow: 0 5px 20px rgba(255,215,0,0.3);
+        }
+
+        .back-to-top.show { opacity: 1; visibility: visible; }
+        .back-to-top:hover { transform: translateY(-4px); }
+
+        /* ============================================ */
+        /* ============= HERO SECTION ================ */
+        /* ============================================ */
+        .hero {
+            min-height: 100vh;
+            display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
+            text-align: center;
+            position: relative; z-index: 2;
+            padding: 40px 20px;
+            background: radial-gradient(ellipse at top, #1a0533 0%, transparent 70%);
+        }
+
+        .hero-crescent {
+            width: 160px; height: 160px;
+            position: relative; margin-bottom: 30px;
+            animation: cFloat 3s ease-in-out infinite;
+        }
+
+        .hero-crescent .moon {
+            width: 160px; height: 160px;
+            background: radial-gradient(circle at 30% 30%, var(--gold), #ff8c00);
+            border-radius: 50%; position: relative;
+            box-shadow: 0 0 60px rgba(255,215,0,0.5), 0 0 120px rgba(255,215,0,0.25);
+        }
+
+        .hero-crescent .moon::after {
+            content: ''; position: absolute;
+            top: -8px; right: -18px;
+            width: 140px; height: 140px;
+            background: var(--purple-deep); border-radius: 50%;
+        }
+
+        .hero-crescent .moon-star {
+            position: absolute; font-size: 2.2rem;
+            top: 50%; left: 28%;
+            transform: translate(-50%, -50%);
+            text-shadow: 0 0 20px var(--gold); z-index: 1;
+        }
+
+        @keyframes cFloat {
+            0%, 100% { transform: translateY(0) rotate(-3deg); }
+            50% { transform: translateY(-15px) rotate(3deg); }
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--rose), var(--rose-dark));
+            color: #fff; padding: 8px 30px; border-radius: 30px;
+            font-size: 1rem; font-weight: 700;
+            margin-bottom: 20px;
+            animation: fadeInUp 0.8s ease both;
+        }
+
+        .hero h1 {
+            font-family: 'Aref Ruqaa', serif;
+            font-size: clamp(2.5rem, 7vw, 4.5rem);
+            color: var(--gold);
+            text-shadow: 0 0 40px rgba(255,215,0,0.4);
+            margin-bottom: 10px;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .hero .hero-name {
+            font-family: 'Aref Ruqaa', serif;
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            color: var(--rose);
+            text-shadow: 0 0 30px rgba(255,107,157,0.4);
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .hero h2 {
+            font-family: 'Aref Ruqaa', serif;
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: var(--cream); margin-bottom: 15px;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            color: var(--lavender);
+            max-width: 650px; line-height: 2.2;
+            animation: fadeInUp 1s ease 0.8s both;
+        }
+
+        .hero-decoration {
+            display: flex; align-items: center;
+            gap: 15px; margin: 25px 0;
+            justify-content: center;
+            animation: fadeInUp 1s ease 1s both;
+        }
+
+        .hero-decoration .line {
+            width: 80px; height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+
+        .hero-decoration .diamond {
+            width: 10px; height: 10px;
+            background: var(--gold);
+            transform: rotate(45deg);
+            box-shadow: 0 0 12px var(--gold);
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(35px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .scroll-indicator {
+            position: absolute; bottom: 35px;
+            left: 50%; transform: translateX(-50%);
+            animation: scrollB 2s ease-in-out infinite;
+            display: flex; flex-direction: column;
+            align-items: center; gap: 8px;
+        }
+
+        .scroll-indicator span {
+            font-size: 0.8rem; color: var(--gold); opacity: 0.6;
+        }
+
+        .scroll-indicator .arrow {
+            width: 24px; height: 24px;
+            border-right: 2px solid var(--gold);
+            border-bottom: 2px solid var(--gold);
+            transform: rotate(45deg); opacity: 0.5;
+        }
+
+        @keyframes scrollB {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(12px); }
+        }
+
+        /* ============================================ */
+        /* ============= SECTION COMMON ============== */
+        /* ============================================ */
+        section { position: relative; z-index: 2; padding: clamp(60px, 10vw, 100px) 20px; }
+
+        .section-title { text-align: center; margin-bottom: clamp(40px, 6vw, 60px); }
+
+        .section-title h2 {
+            font-family: 'Aref Ruqaa', serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            color: var(--gold);
+            text-shadow: 0 0 25px rgba(255,215,0,0.3);
+            margin-bottom: 12px;
+        }
+
+        .section-title .sub {
+            color: var(--rose); font-size: 1rem; margin-bottom: 15px;
+        }
+
+        .ornament {
+            display: flex; align-items: center;
+            justify-content: center; gap: 12px;
+        }
+
+        .ornament span { font-size: 1.3rem; }
+
+        .ornament .line {
+            width: 60px; height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+
+        /* ============================================ */
+        /* ============= TAKBEER ===================== */
+        /* ============================================ */
+        .takbeer-section {
+            padding: 70px 20px; text-align: center;
+            position: relative; overflow: hidden;
+        }
+
+        .takbeer-section::before {
+            content: ''; position: absolute; inset: 0;
+            background: radial-gradient(ellipse at center, #1a0844 0%, transparent 70%);
+        }
+
+        .takbeer-text {
+            font-family: 'Aref Ruqaa', serif;
+            font-size: clamp(1.8rem, 5vw, 3rem);
+            color: var(--gold);
+            text-shadow: 0 0 30px rgba(255,215,0,0.3);
+            line-height: 2.5; position: relative; z-index: 1;
+            max-width: 800px; margin: 0 auto;
+        }
+
+        .takbeer-text .highlight {
+            display: block;
+            font-size: clamp(2.2rem, 6vw, 3.8rem);
+            margin: 15px 0;
+            animation: glowP 2s ease-in-out infinite;
+        }
+
+        @keyframes glowP {
+            0%, 100% { text-shadow: 0 0 20px rgba(255,215,0,0.3); }
+            50% { text-shadow: 0 0 50px var(--gold), 0 0 80px rgba(255,215,0,0.3); }
+        }
+
+        /* ============================================ */
+        /* ============= LOVE MESSAGE ================ */
+        /* ============================================ */
+        .love-message-section {
+            padding: 80px 20px;
+            background: radial-gradient(ellipse at center, rgba(255,107,157,0.08) 0%, transparent 60%);
+        }
+
+        .love-box {
+            max-width: 750px; margin: 0 auto;
+            background: linear-gradient(145deg, rgba(255,107,157,0.08), rgba(26,26,78,0.8));
+            border: 1px solid rgba(255,107,157,0.2);
+            border-radius: 30px;
+            padding: clamp(35px, 6vw, 60px) clamp(25px, 5vw, 50px);
+            text-align: center; position: relative; overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .love-box::before {
+            content: ''; position: absolute;
+            top: 0; left: 0; right: 0; height: 3px;
+            background: linear-gradient(90deg, var(--rose), var(--gold), var(--rose));
+        }
+
+        .love-box .love-emoji {
+            font-size: 3.5rem; display: block; margin-bottom: 20px;
+            animation: heartBeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartBeat {
+            0%, 100% { transform: scale(1); }
+            15% { transform: scale(1.25); }
+            30% { transform: scale(1); }
+            45% { transform: scale(1.25); }
+        }
+
+        .love-box h2 {
+            font-family: 'Aref Ruqaa', serif;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            color: var(--rose); margin-bottom: 20px;
+        }
+
+        .love-box p {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            color: var(--cream); line-height: 2.2; margin-bottom: 12px;
+        }
+
+        .love-box .signature-love {
+            color: var(--gold);
+            font-family: 'Aref Ruqaa', serif;
+            font-size: 1.3rem; margin-top: 25px;
+        }
+
+        /* ============================================ */
+        /* ========== GREETING CARDS ================= */
+        /* ============================================ */
+        .greeting-section {
+            background: linear-gradient(180deg, transparent 0%, rgba(13,13,58,0.5) 50%, transparent 100%);
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+            gap: 25px; max-width: 1200px; margin: 0 auto;
+        }
+
+        .greeting-card {
+            background: linear-gradient(145deg, var(--purple-mid), #12123a);
+            border: 1px solid rgba(255,215,0,0.15);
+            border-radius: 20px;
+            padding: clamp(30px, 4vw, 40px) clamp(20px, 3vw, 30px);
+            text-align: center; position: relative; overflow: hidden;
+            transition: all 0.5s ease;
+            opacity: 0; transform: translateY(40px);
+        }
+
+        .greeting-card.visible { opacity: 1; transform: translateY(0); }
+
+        .greeting-card:hover {
+            transform: translateY(-8px) !important;
+            border-color: var(--gold);
+            box-shadow: 0 15px 50px rgba(255,215,0,0.12);
+        }
+
+        .greeting-card::before {
+            content: ''; position: absolute;
+            top: 0; left: 0; right: 0; height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--rose), var(--gold));
+        }
+
+        .greeting-card .card-icon { font-size: 3rem; margin-bottom: 15px; display: block; }
+
+        .greeting-card h3 {
+            font-family: 'Aref Ruqaa', serif;
+            font-size: 1.6rem; color: var(--gold); margin-bottom: 12px;
+        }
+
+        .greeting-card p { font-size: 1rem; color: var(--lavender); line-height: 2; }
+
+        .card-corner { position: absolute; width: 30px; height: 30px; }
+        .corner-tl { top: 12px; left: 12px; border-top: 2px solid rgba(255,215,0,0.2); border-left: 2px solid rgba(255,215,0,0.2); }
+        .corner-br { bottom: 12px; right: 12px; border-bottom: 2px solid rgba(255,215,0,0.2); border-right: 2px solid rgba(255,215,0,0.2); }
+
+        /* ============================================ */
+        /* ========== PEOPLE / PHOTOS ================ */
+        /* ============================================ */
+        .people-section { padding: clamp(60px, 10vw, 100px) 20px; }
+
+        .people-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr));
+            gap: 30px; max-width: 1300px; margin: 0 auto;
+        }
+
+        .person-card {
+            position: relative; border-radius: 25px; overflow: hidden;
+            height: clamp(380px, 50vw, 500px); cursor: pointer;
+            opacity: 0; transform: translateY(50px);
+            transition: all 0.7s ease; border: 2px solid transparent;
+        }
+
+        .person-card.visible { opacity: 1; transform: translateY(0); }
+
+        .person-card:hover {
+            transform: translateY(-8px) scale(1.01) !important;
+            border-color: var(--gold);
+            box-shadow: 0 20px 60px rgba(255,215,0,0.15);
+        }
+
+        .person-card img {
+            width: 100%; height: 100%;
+            object-fit: cover; transition: transform 0.7s ease;
+        }
+
+        .person-card:hover img { transform: scale(1.08); }
+
+        .person-overlay {
+            position: absolute; bottom: 0; left: 0; right: 0;
+            padding: 70px 20px 25px;
+            background: linear-gradient(transparent, rgba(10,10,46,0.97));
+            text-align: center;
+        }
+
+        .person-overlay .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold), #ff8c00);
+            color: var(--purple-deep);
+            padding: 5px 18px; border-radius: 25px;
+            font-weight: 700; font-size: 0.8rem; margin-bottom: 10px;
+        }
+
+        .person-overlay h3 {
+            font-family: 'Aref Ruqaa', serif;
+            font-size: clamp(1.3rem, 3vw, 1.7rem);
+            color: var(--gold); margin-bottom: 8px;
+        }
+
+        .person-overlay p {
+            font-size: clamp(0.9rem, 2vw, 1rem);
+            color: var(--cream); line-height: 1.8;
+        }
+
+        .person-card .top-icon {
+            position: absolute; top: 18px; right: 18px;
+            font-size: 1.8rem; z-index: 3;
+            animation: iconF 2s ease-in-out infinite;
+        }
+
+        @keyframes iconF {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+
+        .frame-c {
+            position: absolute; width: 25px; height: 25px;
+            z-index: 3; opacity: 0; transition: opacity 0.4s;
+        }
+
+        .person-card:hover .frame-c { opacity: 1; }
+
+        .fc-tl { top: 12px; left: 12px; border-top: 3px solid var(--gold); border-left: 3px solid var(--gold); }
+        .fc-tr { top: 12px; right: 12px; border-top: 3px solid var(--gold); border-right: 3px solid var(--gold); }
+        .fc-bl { bottom: 12px; left: 12px; border-bottom: 3px solid var(--gold); border-left: 3px solid var(--gold); }
+        .fc-br { bottom: 12px; right: 12px; border-bottom: 3px solid var(--gold); border-right: 3px solid var(--gold); }
+
+        /* ============================================ */
+        /* ========== FEATURED FULL WIDTH ============ */
+        /* ============================================ */
+        .featured-section {
+            position: relative;
+            min-height: clamp(60vh, 80vw, 85vh);
+            display: flex; align-items: center; justify-content: center;
+            overflow: hidden; padding: 40px 20px;
+        }
+
+        .featured-section img.bg {
+            position: absolute; top: 0; left: 0;
+            width: 100%; height: 100%; object-fit: cover;
+        }
+
+        .featured-overlay-bg {
+            position: absolute; inset: 0;
+            background: linear-gradient(135deg, rgba(10,10,46,0.85), rgba(26,5,51,0.75));
+            backdrop-filter: blur(3px);
+        }
+
+        .featured-content {
+            position: relative; z-index: 2;
+            text-align: center; max-width: 750px; padding: 30px;
+        }
+
+        .featured-content .emoji-top {
+            font-size: 3.5rem; display: block; margin-bottom: 15px;
+            animation: iconF 2s ease-in-out infinite;
+        }
+
+        .featured-content h2 {
+            font-family: 'Aref Ruqaa', serif;
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            color: var(--gold); margin-bottom: 18px;
+        }
+
+        .featured-content p {
+            font-size: clamp(1.05rem, 2.5vw, 1.3rem);
+            color: #fff; line-height: 2.2; margin-bottom: 8px;
+        }
+
+        .featured-content .dua-text {
+            font-family: 'Amiri', serif;
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
+            color: var(--gold); margin-top: 20px; font-style: italic;
+        }
+
+        /* ============================================ */
+        /* ========== DUO SECTION ==================== */
+        /* ============================================ */
+        .duo-section { padding: clamp(60px, 10vw, 100px) 20px; }
+
+        .duo-container {
+            max-width: 1100px; margin: 0 auto;
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: clamp(25px, 4vw, 40px); align-items: center;
+        }
+
+        .duo-image {
+            position: relative; border-radius: 25px;
+            overflow: hidden; height: clamp(350px, 50vw, 550px);
+        }
+
+        .duo-image img {
+            width: 100%; height: 100%;
+            object-fit: cover; transition: transform 0.5s;
+        }
+
+        .duo-image:hover img { transform: scale(1.05); }
+
+        .duo-image .duo-frame {
+            position: absolute; inset: 12px;
+            border: 2px solid rgba(255,215,0,0.25);
+            border-radius: 20px; pointer-events: none;
+            transition: border-color 0.4s;
+        }
+
+        .duo-image:hover .duo-frame { border-color: var(--gold); }
+
+        .duo-text { padding: clamp(10px, 2vw, 20px); }
+
+        .duo-text .emoji-big { font-size: 2.5rem; display: block; margin-bottom: 15px; }
+
+        .duo-text h2 {
+            font-family: 'Aref Ruqaa', serif;
+            font-size: clamp(1.6rem, 3.5vw, 2.3rem);
+            color: var(--gold); margin-bottom: 15px; line-height: 1.6;
+        }
+
+        .duo-text p {
+            font-size: clamp(0.95rem, 2vw, 1.15rem);
+            color: var(--lavender); line-height: 2.2; margin-bottom: 12px;
+        }
+
+        .duo-text .hl-text {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(255,215,0,0.1), rgba(255,107,157,0.1));
+            border-right: 3px solid var(--rose);
+            padding: 12px 22px; border-radius: 0 12px 12px 0;
+            color: var(--rose); font-family: 'Aref Ruqaa', serif;
+            font-size: 1.1rem; margin-top: 12px;
+        }
+
+        /* ============================================ */
+        /* ========== POETRY ========================= */
+        /* ============================================ */
+        .poetry-section {
+            background: linear-gradient(180deg, transparent, #0f0f3d, transparent);
+            padding: clamp(60px, 10vw, 100px) 20px;
+        }
+
+        .poetry-container { max-width: 850px; margin: 0 auto; }
+
+        .poem {
+            background: linear-gradient(145deg, #1a1a50, #0f0f35);
+            border: 1px solid rgba(255,215,0,0.1);
+            border-radius: 22px;
+            padding: clamp(30px, 5vw, 50px) clamp(25px, 4vw, 40px);
+            margin-bottom: 30px; position: relative; overflow: hidden;
+            opacity: 0; transform: translateX(-40px);
+            transition: all 0.6s ease;
+        }
+
+        .poem.visible { opacity: 1; transform: translateX(0); }
+
+        .poem::before {
+            content: '"'; font-family: serif; font-size: 7rem;
+            color: rgba(255,215,0,0.08); position: absolute;
+            top: -15px; right: 15px; line-height: 1;
+        }
+
+        .poem .verse {
+            font-family: 'Amiri', serif;
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            color: var(--cream); text-align: center;
+            margin-bottom: 12px; line-height: 2.5;
+        }
+
+        /* ============================================ */
+        /* ========== WISHES ========================= */
+        /* ============================================ */
+        .wishes-section { padding: clamp(60px, 10vw, 100px) 20px; }
+
+        .wishes-container {
+            max-width: 1000px; margin: 0 auto;
+            display: flex; flex-direction: column; gap: 20px;
+        }
+
+        .wish-item {
+            display: flex; align-items: center; gap: 20px;
+            background: linear-gradient(135deg, var(--purple-mid), #151545);
+            border-radius: 18px;
+            padding: clamp(20px, 3vw, 30px);
+            border: 1px solid rgba(255,215,0,0.08);
+            transition: all 0.4s ease;
+            opacity: 0; transform: translateY(20px);
+        }
+
+        .wish-item.visible { opacity: 1; transform: translateY(0); }
+
+        .wish-item:hover {
+            border-color: rgba(255,215,0,0.4);
+            box-shadow: 0 8px 35px rgba(255,215,0,0.08);
+        }
+
+        .wish-num {
+            min-width: 50px; height: 50px;
+            background: linear-gradient(135deg, var(--gold), #ff8c00);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.3rem; font-weight: 900;
+            color: var(--purple-deep); flex-shrink: 0;
+        }
+
+        .wish-content h3 {
+            font-family: 'Aref Ruqaa', serif;
+            color: var(--gold);
+            font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+            margin-bottom: 5px;
+        }
+
+        .wish-content p {
+            color: var(--lavender);
+            font-size: clamp(0.9rem, 2vw, 1rem); line-height: 1.8;
+        }
+
+        /* ============================================ */
+        /* ========== BANNER ========================= */
+        /* ============================================ */
+        .banner-section { padding: clamp(60px, 8vw, 80px) 20px; }
+
+        .banner-card {
+            max-width: 1100px; margin: 0 auto;
+            position: relative; border-radius: 25px;
+            overflow: hidden; height: clamp(300px, 45vw, 480px);
+        }
+
+        .banner-card img { width: 100%; height: 100%; object-fit: cover; }
+
+        .banner-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(transparent 20%, rgba(10,10,46,0.95));
+            display: flex; flex-direction: column;
+            justify-content: flex-end;
+            padding: clamp(25px, 5vw, 50px); text-align: center;
+        }
+
+        .banner-overlay h2 {
+            font-family: 'Aref Ruqaa', serif;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            color: var(--gold); margin-bottom: 12px;
+        }
+
+        .banner-overlay p {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            color: var(--cream); line-height: 2;
+            max-width: 650px; margin: 0 auto;
+        }
+
+        /* ============================================ */
+        /* ========== SPECIAL MESSAGE ================ */
+        /* ============================================ */
+        .special-section {
+            padding: clamp(60px, 10vw, 100px) 20px;
+            text-align: center;
+            background: radial-gradient(ellipse at center, rgba(26,5,51,0.5) 0%, transparent 70%);
+        }
+
+        .special-box {
+            max-width: 750px; margin: 0 auto;
+            background: linear-gradient(145deg, #1f1f55, #14143d);
+            border: 2px solid rgba(255,107,157,0.3);
+            border-radius: 30px;
+            padding: clamp(35px, 6vw, 60px) clamp(25px, 5vw, 50px);
+            position: relative; overflow: hidden;
+        }
+
+        .special-box::before {
+            content: ''; position: absolute;
+            top: 0; left: 0; right: 0; height: 3px;
+            background: linear-gradient(90deg, var(--rose), var(--gold), var(--rose));
+        }
+
+        .special-box .sp-emoji { font-size: 3rem; display: block; margin-bottom: 15px; }
+
+        .special-box h2 {
+            font-family: 'Aref Ruqaa', serif;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            color: var(--rose); margin-bottom: 20px;
+        }
+
+        .special-box p {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            color: var(--cream); line-height: 2.2; margin-bottom: 12px;
+        }
+
+        .special-box .heart-big {
+            font-size: 3rem; display: inline-block;
+            animation: heartBeat 1.5s ease-in-out infinite; margin-top: 15px;
+        }
+
+        /* ============================================ */
+        /* ========== TIMELINE ======================= */
+        /* ============================================ */
+        .timeline-section { padding: clamp(60px, 10vw, 80px) 20px; }
+
+        .timeline { max-width: 750px; margin: 0 auto; position: relative; }
+
+        .timeline::before {
+            content: ''; position: absolute;
+            top: 0; bottom: 0; right: 50%; width: 3px;
+            background: linear-gradient(180deg, var(--gold), var(--rose), var(--gold));
+            transform: translateX(50%);
+        }
+
+        .tl-item {
+            position: relative; padding: 15px 0; width: 44%;
+            opacity: 0; transition: all 0.6s ease;
+        }
+
+        .tl-item.visible { opacity: 1; }
+
+        .tl-item:nth-child(odd) {
+            margin-right: auto; text-align: right;
+            padding-right: 35px; transform: translateX(-40px);
+        }
+
+        .tl-item:nth-child(even) {
+            margin-left: auto; text-align: left;
+            padding-left: 35px; transform: translateX(40px);
+        }
+
+        .tl-item.visible:nth-child(odd),
+        .tl-item.visible:nth-child(even) { transform: translateX(0); }
+
+        .tl-item .dot {
+            position: absolute; width: 16px; height: 16px;
+            background: var(--gold); border-radius: 50%; top: 25px;
+            box-shadow: 0 0 12px rgba(255,215,0,0.5);
+        }
+
+        .tl-item:nth-child(odd) .dot { left: calc(100% + 28px); }
+        .tl-item:nth-child(even) .dot { right: calc(100% + 28px); }
+
+        .tl-item .tl-content {
+            background: linear-gradient(145deg, var(--purple-mid), #12123a);
+            border: 1px solid rgba(255,215,0,0.1);
+            border-radius: 14px; padding: clamp(18px, 3vw, 22px);
+        }
+
+        .tl-item h3 {
+            font-family: 'Aref Ruqaa', serif;
+            color: var(--gold); font-size: 1.15rem; margin-bottom: 8px;
+        }
+
+        .tl-item p { color: var(--lavender); font-size: 0.95rem; line-height: 1.8; }
+
+        /* ============================================ */
+        /* ========== FOOTER ========================= */
+        /* ============================================ */
+        .footer {
+            text-align: center;
+            padding: clamp(50px, 8vw, 80px) 20px 100px;
+            position: relative; z-index: 2;
+            border-top: 1px solid rgba(255,215,0,0.1);
+            background: linear-gradient(180deg, transparent, #050520);
+        }
+
+        .footer .big-emoji { font-size: 3.5rem; display: block; margin-bottom: 15px; }
+
+        .footer h2 {
+            font-family: 'Aref Ruqaa', serif;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            color: var(--gold); margin-bottom: 12px;
+        }
+
+        .footer p { color: var(--lavender); font-size: 1rem; margin-bottom: 8px; }
+
+        .footer .sig {
+            font-family: 'Aref Ruqaa', serif;
+            color: var(--rose); font-size: 1.2rem; margin-top: 25px;
+        }
+
+        .footer .made-with { margin-top: 15px; font-size: 0.85rem; color: #555; }
+
+        /* ============================================ */
+        /* ========== RESPONSIVE ===================== */
+        /* ============================================ */
+        @media (max-width: 900px) {
+            .duo-container { grid-template-columns: 1fr; }
+            .duo-image { height: 350px; }
+        }
+
+        @media (max-width: 768px) {
+            .music-player { bottom: 65px; left: 12px; padding: 8px 16px; }
+            .music-label { display: none; }
+            .back-to-top { bottom: 65px; right: 12px; width: 42px; height: 42px; }
+            .watermark { bottom: 12px; font-size: 0.75rem; padding: 6px 16px; }
+            .timeline::before { right: 15px; }
+            .tl-item {
+                width: 80%; margin-right: 0 !important; margin-left: auto !important;
+                text-align: right !important; padding-right: 40px !important; padding-left: 0 !important;
+            }
+            .tl-item .dot { left: auto !important; right: -8px !important; }
+        }
+
+        @media (max-width: 480px) {
+            .pw-title { font-size: 1.8rem; }
+            .pw-input { padding: 14px 18px; font-size: 1.1rem; }
+            .person-card { height: 350px; }
+        }
+
+        @media print {
+            .music-player, .back-to-top, .password-screen, .splash-screen, .watermark { display: none !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============= WATERMARK ============= -->
+    <a href="https://www.instagram.com/b__o_da/" target="_blank" rel="noopener noreferrer" class="watermark" id="watermark" style="display:none;">
+        <span class="wm-icon">⚡</span>
+        <span>نـــےـــجــــم</span>
+        <div class="wm-sep"></div>
+        <span class="wm-made">صانع الموقع</span>
+    </a>
+
+    <!-- ============= PASSWORD SCREEN ============= -->
+    <div class="password-screen" id="passwordScreen">
+        <div class="pw-particles" id="pwParticles"></div>
+        <div class="pw-container">
+            <span class="pw-lock-icon">🔐</span>
+            <h1 class="pw-title">هدية خاصة جداً</h1>
+            <p class="pw-subtitle">هذه الهدية لشخص واحد بس في الدنيا 💛</p>
+            <input type="text" class="pw-input" id="pwInput" placeholder="ادخلي الباسورد يا قمر" autocomplete="off" inputmode="text">
+            <div class="pw-hint">
+                <span>💡</span>
+                <span>التلميح: تاريخ ميلادك يا شوكولاتي بحبك 💛</span>
+            </div>
+            <button class="pw-btn" onclick="checkPassword()">افتحي الهدية 🎁</button>
+            <div class="pw-error" id="pwError">❌ الباسورد غلط يا شوكولاتي.. حاولي تاني 💛</div>
+            <div class="pw-hearts">
+                <span style="--d:2s;--delay:0s">💛</span>
+                <span style="--d:2.5s;--delay:0.3s">🌙</span>
+                <span style="--d:2s;--delay:0.6s">💛</span>
+                <span style="--d:2.5s;--delay:0.2s">✨</span>
+                <span style="--d:2s;--delay:0.5s">💛</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============= SPLASH SCREEN ============= -->
+    <div class="splash-screen" id="splash">
+        <div class="splash-envelope">💌</div>
+        <div class="splash-name">يا دعاء 🌙</div>
+        <div class="splash-love">يا شوكولاتي يا روح قلبي 💛</div>
+        <div class="splash-msg">
+            جهزتلك هدية بسيطة بمناسبة عيد الفطر المبارك
+            <br>بتمنى تعجبك يا حبيبتي
+        </div>
+        <button class="splash-open-btn" onclick="openGift()">افتحي هديتك يا قمر 💝</button>
+    </div>
+
+    <!-- ===== MUSIC ===== -->
+    <audio id="bgMusic" loop preload="auto">
+        <source data-enc="aHR0cHM6Ly9pLnRvcDR0b3AuaW8vbV8zNzI5YjIycTcxLm1wMw==" type="audio/mpeg" id="audioSource">
+    </audio>
+
+    <!-- ===== MUSIC PLAYER ===== -->
+    <div class="music-player" id="musicPlayer" onclick="toggleMusic()" style="display:none;">
+        <span class="music-icon">🎵</span>
+        <div class="music-bars">
+            <div class="music-bar"></div><div class="music-bar"></div>
+            <div class="music-bar"></div><div class="music-bar"></div>
+            <div class="music-bar"></div>
+        </div>
+        <span class="music-label">ميوزك</span>
+    </div>
+
+    <!-- ===== STARS ===== -->
+    <div class="stars-container" id="starsContainer"></div>
+
+    <!-- ===== BACK TO TOP ===== -->
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">⬆</button>
+
+    <!-- ================================================================ -->
+    <!-- ======================== MAIN CONTENT ========================= -->
+    <!-- ================================================================ -->
+    <div id="mainContent" style="display:none;">
+
+        <!-- ===== HERO ===== -->
+        <section class="hero">
+            <div class="hero-crescent">
+                <div class="moon"><span class="moon-star">⭐</span></div>
+            </div>
+            <span class="hero-badge">هدية خاصة لحبيبتي 💛</span>
+            <h1>عيد فطر مبارك</h1>
+            <div class="hero-name">يا دعاء يا شوكولاتي 🍫💛</div>
+            <h2>كل عام وأنتِ حبيبتي وروح قلبي</h2>
+            <div class="hero-decoration">
+                <div class="line"></div><div class="diamond"></div><div class="line"></div>
+            </div>
+            <p>
+                بمناسبة عيد الفطر المبارك يا حبيبتي يا دعاء، حبيت أقولك إنك أجمل هدية
+                في حياتي، وكل عيد بيكون أحلى لأنك موجودة فيه.
+                ربنا يخليكي ليا ويديم حبنا ويكتبلنا الخير دايماً
+            </p>
+            <div class="scroll-indicator">
+                <span>انزلي تحت 💛</span>
+                <div class="arrow"></div>
+            </div>
+        </section>
+
+        <!-- ===== LOVE MESSAGE ===== -->
+        <section class="love-message-section">
+            <div class="love-box">
+                <span class="love-emoji">💝</span>
+                <h2>رسالة حب من قلبي ليكِ يا شوكولاتي</h2>
+                <p>يا دعاء يا أجمل حاجة في حياتي، يا روح قلبي ومراتي المستقبلية، بحبك بجنون وكل يوم بحبك أكتر من اللي قبله</p>
+                <p>أنتِ الإنسانة اللي غيرت حياتي وخلت كل حاجة فيها حلوة، بشكر ربنا كل يوم إنه حطك في طريقي</p>
+                <p>في العيد ده بتمنى من ربنا يسعدك ويفرح قلبك ويخلينا لبعض طول العمر يا حبيبتي</p>
+                <div class="signature-love">بحبك يا شوكولاتي 🍫💛 - حبيبك للأبد</div>
+            </div>
+        </section>
+
+        <!-- ===== TAKBEER ===== -->
+        <section class="takbeer-section">
+            <div class="takbeer-text">
+                <span class="highlight">الله أكبر الله أكبر</span>
+                لا إله إلا الله
+                <span class="highlight">الله أكبر الله أكبر</span>
+                ولله الحمد
+            </div>
+        </section>
+
+        <!-- ===== FEATURED 1 ===== -->
+        <section class="featured-section">
+            <img class="bg" src="" data-enc="aHR0cHM6Ly9lLnRvcDR0b3AuaW8vcF8zNzI5dDA4dTYxLmpwZw==" alt="دعاء" loading="lazy">
+            <div class="featured-overlay-bg"></div>
+            <div class="featured-content">
+                <span class="emoji-top">🌙</span>
+                <h2>يا أجمل دعاء في الدنيا</h2>
+                <p>كل عيد وأنتِ بجانبي يا حبيبتي، كل عيد وأنتِ أجمل وأحلى وأقرب لقلبي</p>
+                <p>أنتِ الشوكولاتة اللي بتحلي حياتي 🍫 وأنتِ الدعاء اللي ربنا استجابه ليا 🤲</p>
+                <div class="dua-text">اللهم احفظها لي واسعدها وبارك في حياتها 🤲</div>
+            </div>
+        </section>
+
+        <!-- ===== GREETING CARDS ===== -->
+        <section class="greeting-section">
+            <div class="section-title">
+                <h2>تهاني العيد ليكِ يا قمري</h2>
+                <p class="sub">كل تهنئة دي من قلبي ليكِ يا دعاء 💛</p>
+                <div class="ornament"><div class="line"></div><span>🌙</span><div class="line"></div></div>
+            </div>
+            <div class="cards-grid">
+                <div class="greeting-card">
+                    <div class="card-corner corner-tl"></div><div class="card-corner corner-br"></div>
+                    <span class="card-icon">🌙</span>
+                    <h3>كل عيد وأنتِ معايا</h3>
+                    <p>يا دعاء كل عيد وأنتِ في حياتي، وكل سنة وأنا بحبك أكتر. ربنا يخلينا لبعض ويتمم علينا بالخير يا حبيبتي</p>
+                </div>
+                <div class="greeting-card">
+                    <div class="card-corner corner-tl"></div><div class="card-corner corner-br"></div>
+                    <span class="card-icon">💝</span>
+                    <h3>حبيبتي يا شوكولاتي</h3>
+                    <p>أنتِ أحلى هدية ربنا أداهالي، وعيدي الحقيقي هو إنك موجودة في حياتي. بحبك من كل قلبي يا أغلى الناس</p>
+                </div>
+                <div class="greeting-card">
+                    <div class="card-corner corner-tl"></div><div class="card-corner corner-br"></div>
+                    <span class="card-icon">🕌</span>
+                    <h3>تقبل الله مننا</h3>
+                    <p>ربنا يتقبل منا ومنك الصيام والقيام يا حبيبتي، ويجعلنا من عتقاءه من النار ويجمعنا في الجنة يا رب</p>
+                </div>
+                <div class="greeting-card">
+                    <div class="card-corner corner-tl"></div><div class="card-corner corner-br"></div>
+                    <span class="card-icon">⭐</span>
+                    <h3>مراتي المستقبلية</h3>
+                    <p>كل عيد بحلم إن العيد الجاي يكون وأنتِ مراتي رسمي، ربنا يتمملنا على خير يا رب ويكتبلنا الخير</p>
+                </div>
+                <div class="greeting-card">
+                    <div class="card-corner corner-tl"></div><div class="card-corner corner-br"></div>
+                    <span class="card-icon">🎊</span>
+                    <h3>فرحتي بيكِ</h3>
+                    <p>فرحة العيد مش بتكمل غير لما أسمع صوتك وأشوفك مبسوطة. ربنا يخليكي ليا ويديم فرحتنا دي للأبد</p>
+                </div>
+                <div class="greeting-card">
+                    <div class="card-corner corner-tl"></div><div class="card-corner corner-br"></div>
+                    <span class="card-icon">🍫</span>
+                    <h3>يا أحلى شوكولاتة</h3>
+                    <p>زي ما الشوكولاتة بتحلي كل حاجة، أنتِ بتحلي حياتي كلها يا شوكولاتي. كل عام وأنتِ سعادتي وفرحتي</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== PEOPLE GALLERY ===== -->
+        <section class="people-section">
+            <div class="section-title">
+                <h2>صور أحلى حبيبة 📸</h2>
+                <p class="sub">كل صورة ليكِ بتكون أجمل من اللي قبلها يا قمر 🌙</p>
+                <div class="ornament"><div class="line"></div><span>💛</span><div class="line"></div></div>
+            </div>
+            <div class="people-grid">
+                <!-- 1 -->
+                <div class="person-card">
+                    <div class="frame-c fc-tl"></div><div class="frame-c fc-tr"></div>
+                    <div class="frame-c fc-bl"></div><div class="frame-c fc-br"></div>
+                    <span class="top-icon">👑</span>
+                    <img src="" data-enc="aHR0cHM6Ly9mLnRvcDR0b3AuaW8vcF8zNzI5cWlhdjYxLmpwZw==" alt="دعاء" loading="lazy">
+                    <div class="person-overlay">
+                        <span class="badge">ملكة قلبي 👑</span>
+                        <h3>يا أجمل دعاء</h3>
+                        <p>أنتِ ملكة قلبي وحياتي كلها، ربنا يخليكِ ليا ويسعدك دايماً يا حبيبتي</p>
+                    </div>
+                </div>
+                <!-- 2 -->
+                <div class="person-card">
+                    <div class="frame-c fc-tl"></div><div class="frame-c fc-tr"></div>
+                    <div class="frame-c fc-bl"></div><div class="frame-c fc-br"></div>
+                    <span class="top-icon">🌙</span>
+                    <img src="" data-enc="aHR0cHM6Ly9pLnRvcDR0b3AuaW8vcF8zNzI5NDc4dDYxLmpwZw==" alt="دعاء" loading="lazy">
+                    <div class="person-overlay">
+                        <span class="badge">عيد سعيد 🌙</span>
+                        <h3>كل عيد وأنتِ أجمل</h3>
+                        <p>يا شوكولاتي كل عيد وأنتِ أحلى وأجمل وأقرب لقلبي يا حبيبتي</p>
+                    </div>
+                </div>
+                <!-- 3 -->
+                <div class="person-card">
+                    <div class="frame-c fc-tl"></div><div class="frame-c fc-tr"></div>
+                    <div class="frame-c fc-bl"></div><div class="frame-c fc-br"></div>
+                    <span class="top-icon">💫</span>
+                    <img src="" data-enc="aHR0cHM6Ly9oLnRvcDR0b3AuaW8vcF8zNzI5eGsxZDYzLmpwZw==" alt="دعاء" loading="lazy">
+                    <div class="person-overlay">
+                        <span class="badge">روح قلبي 💛</span>
+                        <h3>نور عيني يا دعاء</h3>
+                        <p>أنتِ نور عيني وروح قلبي، ربنا يديم حبنا ويتمم علينا بالخير</p>
+                    </div>
+                </div>
+                <!-- 4 -->
+                <div class="person-card">
+                    <div class="frame-c fc-tl"></div><div class="frame-c fc-tr"></div>
+                    <div class="frame-c fc-bl"></div><div class="frame-c fc-br"></div>
+                    <span class="top-icon">🍫</span>
+                    <img src="" data-enc="aHR0cHM6Ly9pLnRvcDR0b3AuaW8vcF8zNzI5NTdpbGg0LmpwZw==" alt="دعاء" loading="lazy">
+                    <div class="person-overlay">
+                        <span class="badge">شوكولاتي 🍫</span>
+                        <h3>يا أحلى شوكولاتة</h3>
+                        <p>زي ما الشوكولاتة حلوة، أنتِ أحلى منها بمليون مرة يا حبيبتي</p>
+                    </div>
+                </div>
+                <!-- 5 -->
+                <div class="person-card">
+                    <div class="frame-c fc-tl"></div><div class="frame-c fc-tr"></div>
+                    <div class="frame-c fc-bl"></div><div class="frame-c fc-br"></div>
+                    <span class="top-icon">✨</span>
+                    <img src="" data-enc="aHR0cHM6Ly9qLnRvcDR0b3AuaW8vcF8zNzI5OHFtZms1LmpwZw==" alt="دعاء" loading="lazy">
+                    <div class="person-overlay">
+                        <span class="badge">حبيبتي 💝</span>
+                        <h3>يا أغلى إنسانة</h3>
+                        <p>أنتِ أغلى حد في الدنيا عندي، وبحبك حب مالوش حدود يا روحي</p>
+                    </div>
+                </div>
+                <!-- 6 -->
+                <div class="person-card">
+                    <div class="frame-c fc-tl"></div><div class="frame-c fc-tr"></div>
+                    <div class="frame-c fc-bl"></div><div class="frame-c fc-br"></div>
+                    <span class="top-icon">💛</span>
+                    <img src="" data-enc="aHR0cHM6Ly9rLnRvcDR0b3AuaW8vcF8zNzI5NnNnOHY2LmpwZw==" alt="دعاء" loading="lazy">
+                    <div class="person-overlay">
+                        <span class="badge">مراتي المستقبلية 💍</span>
+                        <h3>يا أحلى مستقبل</h3>
+                        <p>بحلم باليوم اللي هتبقي فيه مراتي رسمي، ربنا يتمملنا على خير يا رب</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== DUO 1 ===== -->
+        <section class="duo-section">
+            <div class="duo-container">
+                <div class="duo-image">
+                    <img src="" data-enc="aHR0cHM6Ly9sLnRvcDR0b3AuaW8vcF8zNzI5d2J3ZDY3LmpwZw==" alt="دعاء" loading="lazy">
+                    <div class="duo-frame"></div>
+                </div>
+                <div class="duo-text">
+                    <span class="emoji-big">💝</span>
+                    <h2>ليه بحبك يا دعاء؟</h2>
+                    <p>بحبك لأنك إنسانة مش زي أي حد تاني في الدنيا. بحبك لأن قلبك طيب ونقي وجميل. بحبك لأنك بتفهميني من غير ما أتكلم.</p>
+                    <p>بحبك لأن وجودك في حياتي خلاها جنة. بحبك ببساطة... لأنك أنتِ 💛</p>
+                    <div class="hl-text">أنتِ الدعاء اللي ربنا استجابه ليا 🤲</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== FEATURED 2 ===== -->
+        <section class="featured-section">
+            <img class="bg" src="" data-enc="aHR0cHM6Ly9kLnRvcDR0b3AuaW8vcF8zNzI5OXM4bTYxLmpwZw==" alt="دعاء" loading="lazy">
+            <div class="featured-overlay-bg"></div>
+            <div class="featured-content">
+                <span class="emoji-top">⭐</span>
+                <h2>أنتِ أجمل هدية في حياتي</h2>
+                <p>مفيش هدية في العيد ممكن تساوي وجودك في حياتي يا شوكولاتي. أنتِ الهدية اللي مش محتاجة تغليف لأنها أجمل من أي تغليف</p>
+                <p>كل عيد وأنتِ معايا يا حبيبتي يا دعاء 💛</p>
+                <div class="dua-text">يارب تعيده علينا سنين كتير وإحنا مع بعض 🤲</div>
+            </div>
+        </section>
+
+        <!-- ===== POETRY ===== -->
+        <section class="poetry-section">
+            <div class="section-title">
+                <h2>كلام من القلب</h2>
+                <p class="sub">كلمات كتبتها ليكِ يا حبيبتي 💛</p>
+                <div class="ornament"><div class="line"></div><span>📜</span><div class="line"></div></div>
+            </div>
+            <div class="poetry-container">
+                <div class="poem">
+                    <p class="verse">أتاكِ العيدُ يا دعاءُ بالحُبِّ</p>
+                    <p class="verse">ويهديكِ السعادةَ والهَناءَ</p>
+                    <p class="verse">فأنتِ الروحُ والدنيا جميعاً</p>
+                    <p class="verse">وأنتِ الشمسُ تملأُ لي سماءَ</p>
+                </div>
+                <div class="poem">
+                    <p class="verse">يا شوكولاتتي يا أحلى من العيدِ</p>
+                    <p class="verse">وأحلى من كعكِ العيدِ والحلوى</p>
+                    <p class="verse">بحبك حُب مالوش حدود</p>
+                    <p class="verse">وقلبي ما عرف غيرك هوى</p>
+                </div>
+                <div class="poem">
+                    <p class="verse">يا دعاءُ أنتِ دعائي لربي</p>
+                    <p class="verse">وأنتِ أملي وفرحتي ونوري</p>
+                    <p class="verse">كلَّ عيدٍ وأنتِ في قلبي</p>
+                    <p class="verse">وأنتِ مستقبلي وكلُّ سروري</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== DUO 2 ===== -->
+        <section class="duo-section">
+            <div class="duo-container" style="direction: ltr;">
+                <div class="duo-image">
+                    <img src="" data-enc="aHR0cHM6Ly9pLnRvcDR0b3AuaW8vcF8zNzI5NDc4dDYxLmpwZw==" alt="دعاء" loading="lazy">
+                    <div class="duo-frame"></div>
+                </div>
+                <div class="duo-text" style="text-align: right;">
+                    <span class="emoji-big">🌙</span>
+                    <h2>أمنياتي ليكِ في العيد</h2>
+                    <p>أتمنى ربنا يسعدك سعادة ماتنتهيش. أتمنى ربنا يحققلك كل أحلامك. أتمنى ربنا يخليني سبب سعادتك دايماً.</p>
+                    <p>أتمنى ربنا يتمملنا على خير قريب ونعيش مع بعض أحلى حياة يا مراتي المستقبلية 💍</p>
+                    <div class="hl-text">يا رب يجمعنا على خير قريب 💛</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== BANNER ===== -->
+        <section class="banner-section">
+            <div class="section-title">
+                <h2>أحلى لحظة</h2>
+                <div class="ornament"><div class="line"></div><span>📸</span><div class="line"></div></div>
+            </div>
+            <div class="banner-card">
+                <img src="" data-enc="aHR0cHM6Ly9lLnRvcDR0b3AuaW8vcF8zNzI5dDA4dTYxLmpwZw==" alt="دعاء" loading="lazy">
+                <div class="banner-overlay">
+                    <h2>🌙 أحلى لحظات حياتي معاكِ 🌙</h2>
+                    <p>كل لحظة بقضيها معاكِ بتكون أحلى لحظة في عمري. وكل عيد بيكون أحلى لأنك موجودة فيه يا حبيبتي يا دعاء. ربنا يديم لحظاتنا الحلوة دي للأبد</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== WISHES ===== -->
+        <section class="wishes-section">
+            <div class="section-title">
+                <h2>أمنياتي ليكِ يا شوكولاتي</h2>
+                <p class="sub">كل أمنية من دول من قلبي ليكِ 💛</p>
+                <div class="ornament"><div class="line"></div><span>🤲</span><div class="line"></div></div>
+            </div>
+            <div class="wishes-container">
+                <div class="wish-item">
+                    <div class="wish-num">١</div>
+                    <div class="wish-content">
+                        <h3>السعادة الأبدية</h3>
+                        <p>يا رب تسعدك سعادة ما تنتهيش وتفرح قلبك فرحة ماتتوصفش يا دعاء يا حبيبتي</p>
+                    </div>
+                </div>
+                <div class="wish-item">
+                    <div class="wish-num">٢</div>
+                    <div class="wish-content">
+                        <h3>الصحة والعافية</h3>
+                        <p>يا رب تمتعك بالصحة والعافية وتبعد عنك كل وجع وتعب يا روحي يا شوكولاتي</p>
+                    </div>
+                </div>
+                <div class="wish-item">
+                    <div class="wish-num">٣</div>
+                    <div class="wish-content">
+                        <h3>تحقيق الأحلام</h3>
+                        <p>يا رب يحققلك كل أحلامك وأمنياتك ويفتحلك كل الأبواب المغلقة يا حبيبة قلبي</p>
+                    </div>
+                </div>
+                <div class="wish-item">
+                    <div class="wish-num">٤</div>
+                    <div class="wish-content">
+                        <h3>نكمل حياتنا مع بعض</h3>
+                        <p>يا رب يتمملنا على خير قريب ونعيش مع بعض أحلى حياة يا مراتي المستقبلية يا دعاء 💍</p>
+                    </div>
+                </div>
+                <div class="wish-item">
+                    <div class="wish-num">٥</div>
+                    <div class="wish-content">
+                        <h3>راحة البال</h3>
+                        <p>يا رب يرزقك راحة البال وطمأنينة القلب ويبعد عنك كل هم وحزن يا قمري</p>
+                    </div>
+                </div>
+                <div class="wish-item">
+                    <div class="wish-num">٦</div>
+                    <div class="wish-content">
+                        <h3>حبنا يدوم</h3>
+                        <p>يا رب يديم حبنا ويبارك فيه ويخلينا لبعض طول العمر ويجمعنا في الجنة يا حبيبتي</p>
+                    </div>
+                </div>
+                <div class="wish-item">
+                    <div class="wish-num">٧</div>
+                    <div class="wish-content">
+                        <h3>أبقى سبب سعادتك</h3>
+                        <p>يا رب يخليني دايماً سبب سعادتك وفرحتك ويوفقني أخليكِ أسعد واحدة في الدنيا يا شوكولاتي</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== FEATURED 3 ===== -->
+        <section class="featured-section">
+            <img class="bg" src="" data-enc="aHR0cHM6Ly9rLnRvcDR0b3AuaW8vcF8zNzI5NnNnOHY2LmpwZw==" alt="دعاء" loading="lazy">
+            <div class="featured-overlay-bg"></div>
+            <div class="featured-content">
+                <span class="emoji-top">💍</span>
+                <h2>يا مراتي المستقبلية</h2>
+                <p>بحلم باليوم اللي هنكون فيه مع بعض رسمي يا دعاء. بحلم بالبيت اللي هنبنيه مع بعض والحياة اللي هنعيشها سوا</p>
+                <p>ربنا يتمملنا على خير ويكتبلنا حياة سعيدة مع بعض مليانة حب وفرح وسعادة يا حبيبتي 💛</p>
+                <div class="dua-text">يا رب يجمعنا على خير ويبارك في حبنا 🤲</div>
+            </div>
+        </section>
+
+        <!-- ===== TIMELINE ===== -->
+        <section class="timeline-section">
+            <div class="section-title">
+                <h2>يوم العيد معاكِ</h2>
+                <p class="sub">كده بتمنى يبقى يوم العيد معاكِ 💛</p>
+                <div class="ornament"><div class="line"></div><span>🕐</span><div class="line"></div></div>
+            </div>
+            <div class="timeline">
+                <div class="tl-item">
+                    <div class="dot"></div>
+                    <div class="tl-content">
+                        <h3>🌅 الصبح بدري</h3>
+                        <p>أصحى من النوم وأول حاجة أبعتلك رسالة: كل عام وأنتِ حبيبتي يا شوكولاتي 💛</p>
+                    </div>
+                </div>
+                <div class="tl-item">
+                    <div class="dot"></div>
+                    <div class="tl-content">
+                        <h3>🕌 بعد صلاة العيد</h3>
+                        <p>أدعيلك في صلاة العيد: يا رب اسعد دعاء واحفظها وتمملنا على خير 🤲</p>
+                    </div>
+                </div>
+                <div class="tl-item">
+                    <div class="dot"></div>
+                    <div class="tl-content">
+                        <h3>📞 أسمع صوتك</h3>
+                        <p>أكلمك وأسمع صوتك الحلو وأقولك كل سنة وأنتِ طيبة يا أجمل دعاء</p>
+                    </div>
+                </div>
+                <div class="tl-item">
+                    <div class="dot"></div>
+                    <div class="tl-content">
+                        <h3>🎁 هديتك</h3>
+                        <p>أجهزلك هدية حلوة (زي الموقع ده 😄) عشان أفرح قلبك يا شوكولاتي</p>
+                    </div>
+                </div>
+                <div class="tl-item">
+                    <div class="dot"></div>
+                    <div class="tl-content">
+                        <h3>💭 أفضل أفكر فيكِ</h3>
+                        <p>طول اليوم أفضل أفكر فيكِ وأتمنى إن كل عيد جاي نكون مع بعض فيه</p>
+                    </div>
+                </div>
+                <div class="tl-item">
+                    <div class="dot"></div>
+                    <div class="tl-content">
+                        <h3>🌙 بالليل</h3>
+                        <p>أقولك تصبحي على خير يا حبيبتي وأنام وأنا مبسوط إن ربنا رزقني بيكِ 💛</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SPECIAL MESSAGE ===== -->
+        <section class="special-section">
+            <div class="special-box">
+                <span class="sp-emoji">💌</span>
+                <h2>آخر كلمة يا شوكولاتي</h2>
+                <p>يا دعاء يا حبيبتي يا روح قلبي، أنا عارف إن الموقع ده مش هيعبر عن كل اللي في قلبي ليكِ</p>
+                <p>بس بحب أقولك إنك أهم إنسانة في حياتي وإنك الشخص اللي بحب أبدأ يومي وأنهيه بيكِ</p>
+                <p>كل عام وأنتِ حبيبتي ومراتي المستقبلية وأجمل حاجة في حياتي. بحبك يا شوكولاتي 🍫💛</p>
+                <span class="heart-big">❤️</span>
+            </div>
+        </section>
+
+        <!-- ===== FOOTER ===== -->
+        <footer class="footer">
+            <span class="big-emoji">🌙</span>
+            <h2>عيدك مبارك يا دعاء</h2>
+            <p>كل عام وأنتِ حبيبتي</p>
+            <p>تقبل الله منا ومنك صالح الأعمال</p>
+            <p>عساكِ من عواده يا شوكولاتي 🍫</p>
+            <div class="hero-decoration">
+                <div class="line"></div><div class="diamond"></div><div class="line"></div>
+            </div>
+            <p class="sig">بكل حب من قلبي ليكِ 💛<br>حبيبك اللي بيموت فيكِ ❤️</p>
+            <p class="made-with">
+                صُنعت بكل حب 💛 خصيصاً لدعاء (شوكولاتي) 🍫
+                <br>عيد الفطر المبارك ١٤٤٦ هـ - ٢٠٢٥ م
+            </p>
+        </footer>
+
+    </div>
+
+    <!-- ================================================================ -->
+    <!-- ========================= JAVASCRIPT ========================== -->
+    <!-- ================================================================ -->
+    <script>
+        // ===== PASSWORD PARTICLES =====
+        (function(){
+            const c=document.getElementById('pwParticles');
+            const cols=['#ffd700','#ff6b9d','#fff','#e040fb'];
+            for(let i=0;i<40;i++){
+                const p=document.createElement('div');
+                p.className='pw-particle';
+                const s=Math.random()*6+2;
+                p.style.cssText=`width:${s}px;height:${s}px;background:${cols[Math.floor(Math.random()*cols.length)]};top:${Math.random()*100}%;left:${Math.random()*100}%;--dur:${3+Math.random()*4}s;animation-delay:${Math.random()*3}s;`;
+                c.appendChild(p);
+            }
+        })();
+
+        // ===== PASSWORD =====
+        const CORRECT_PW=atob('Mi8xMi8yMDA5');
+
+        document.getElementById('pwInput').addEventListener('keydown',function(e){
+            if(e.key==='Enter') checkPassword();
+        });
+
+        function checkPassword(){
+            const input=document.getElementById('pwInput').value.trim();
+            const error=document.getElementById('pwError');
+            if(input===CORRECT_PW){
+                error.classList.remove('show');
+                document.getElementById('passwordScreen').classList.add('hidden');
+                document.getElementById('splash').classList.add('active');
+                setTimeout(()=>{document.getElementById('passwordScreen').style.display='none';},900);
+            } else {
+                error.classList.add('show');
+                document.getElementById('pwInput').style.borderColor='#ff4444';
+                setTimeout(()=>{document.getElementById('pwInput').style.borderColor='rgba(255,215,0,0.3)';},1500);
+            }
+        }
+
+        // ===== OPEN GIFT =====
+        function openGift(){
+            const splash=document.getElementById('splash');
+            splash.classList.add('hidden');
+            document.getElementById('mainContent').style.display='block';
+            document.getElementById('musicPlayer').style.display='flex';
+            document.getElementById('watermark').style.display='flex';
+
+            const music=document.getElementById('bgMusic');
+            music.volume=0.4;
+            music.play().catch(()=>{});
+
+            createStars(); createFloatingEmojis();
+            createConfetti(); createRosePetals();
+
+            setTimeout(()=>{splash.style.display='none';},1200);
+
+            // Observe animations
+            document.querySelectorAll('.greeting-card,.person-card,.poem,.wish-item,.tl-item').forEach(el=>obs.observe(el));
+        }
+
+        // ===== STARS =====
+        function createStars(){
+            const c=document.getElementById('starsContainer'); c.innerHTML='';
+            const n=window.innerWidth<768?80:150;
+            for(let i=0;i<n;i++){
+                const s=document.createElement('div'); s.className='star';
+                const sz=Math.random()*3+1;
+                s.style.cssText=`width:${sz}px;height:${sz}px;top:${Math.random()*100}%;left:${Math.random()*100}%;--dur:${2+Math.random()*3}s;animation-delay:${Math.random()*3}s;`;
+                c.appendChild(s);
+            }
+        }
+
+        // ===== FLOATING EMOJIS =====
+        function createFloatingEmojis(){
+            const em=['🌙','⭐','✨','💛','🍫','💫','💝','🎊'];
+            const n=window.innerWidth<768?6:10;
+            for(let i=0;i<n;i++){
+                const el=document.createElement('div'); el.className='floating-emoji';
+                el.textContent=em[i%em.length];
+                el.style.cssText=`font-size:${1+Math.random()*0.8}rem;top:${5+Math.random()*85}%;${Math.random()>0.5?'left':'right'}:${1+Math.random()*5}%;--speed:${3+Math.random()*3}s;animation-delay:${Math.random()*2}s;`;
+                document.body.appendChild(el);
+            }
+        }
+
+        // ===== CONFETTI =====
+        function createConfetti(){
+            const cols=['#ffd700','#ff6b9d','#ff1744','#00e676','#2979ff','#e040fb','#fff'];
+            const n=window.innerWidth<768?60:100;
+            for(let i=0;i<n;i++){
+                setTimeout(()=>{
+                    const c=document.createElement('div'); c.className='confetti-piece';
+                    const sz=Math.random()*10+4;
+                    const shapes=['50%','2px','0'];
+                    c.style.cssText=`width:${sz}px;height:${Math.random()>0.5?sz:sz*2.5}px;background:${cols[Math.floor(Math.random()*cols.length)]};left:${Math.random()*100}%;border-radius:${shapes[Math.floor(Math.random()*3)]};--fs:${3+Math.random()*3}s;animation-delay:${Math.random()*2}s;`;
+                    document.body.appendChild(c);
+                    setTimeout(()=>c.remove(),7000);
+                },i*35);
+            }
+        }
+
+        // ===== ROSE PETALS =====
+        function createRosePetals(){
+            for(let i=0;i<20;i++){
+                setTimeout(()=>{
+                    const p=document.createElement('div'); p.className='rose-petal';
+                    const cols=['#ff6b9d','#ff1744','#e91e63','#f48fb1'];
+                    p.style.cssText=`left:${Math.random()*100}%;background:${cols[Math.floor(Math.random()*cols.length)]};width:${10+Math.random()*10}px;height:${10+Math.random()*10}px;--ps:${5+Math.random()*5}s;animation-delay:${Math.random()*3}s;`;
+                    document.body.appendChild(p);
+                    setTimeout(()=>p.remove(),12000);
+                },i*200);
+            }
+        }
+
+        // ===== MUSIC =====
+        function toggleMusic(){
+            const m=document.getElementById('bgMusic');
+            const p=document.getElementById('musicPlayer');
+            if(m.paused){m.play();p.classList.remove('paused');}
+            else{m.pause();p.classList.add('paused');}
+        }
+
+        // ===== SCROLL ANIMATIONS =====
+        const obs=new IntersectionObserver((entries)=>{
+            entries.forEach((entry,i)=>{
+                if(entry.isIntersecting){
+                    setTimeout(()=>entry.target.classList.add('visible'),i*80);
+                }
+            });
+        },{threshold:0.1,rootMargin:'0px 0px -30px 0px'});
+
+        // ===== BACK TO TOP =====
+        window.addEventListener('scroll',()=>{
+            document.getElementById('backToTop').classList.toggle('show',window.scrollY>500);
+        });
+
+        // ===== PERIODIC EFFECTS =====
+        setInterval(()=>{
+            if(document.getElementById('mainContent').style.display==='none') return;
+            for(let i=0;i<3;i++){
+                const c=document.createElement('div'); c.className='confetti-piece';
+                const cols=['#ffd700','#ff6b9d','#fff'];
+                c.style.cssText=`width:5px;height:5px;background:${cols[Math.floor(Math.random()*3)]};left:${Math.random()*100}%;border-radius:50%;--fs:${4+Math.random()*3}s;`;
+                document.body.appendChild(c);
+                setTimeout(()=>c.remove(),8000);
+            }
+        },5000);
+
+        setInterval(()=>{
+            if(document.getElementById('mainContent').style.display==='none') return;
+            const p=document.createElement('div'); p.className='rose-petal';
+            p.style.cssText=`left:${Math.random()*100}%;--ps:${6+Math.random()*4}s;`;
+            document.body.appendChild(p);
+            setTimeout(()=>p.remove(),12000);
+        },3000);
+    
+        // ===== DECODE PROTECTED ASSETS =====
+        (function(){
+            // Decode images
+            document.querySelectorAll('[data-enc]').forEach(function(el){
+                var url = atob(el.getAttribute('data-enc'));
+                if(el.tagName === 'SOURCE'){
+                    el.setAttribute('src', url);
+                    el.parentElement.load();
+                } else {
+                    el.src = url;
+                }
+                el.removeAttribute('data-enc');
+            });
+        })();
+</script>
+
+</body>
+</html>
